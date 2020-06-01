@@ -1,6 +1,6 @@
 class TodosController < ApplicationController
   def index
-    todos = Todo.order("Created_at DESC")
+    todos = Todo.order("created_at DESC")
     render json: todos
   end
 
@@ -10,13 +10,13 @@ class TodosController < ApplicationController
   end
 
   def update
-    todo = Todo.find(todo_param)
+    todo = Todo.find(params[:id])
     todo.update_attributes(todo_param)
     render json: todo
   end
 
   def destroy
-    todo = Todo.find(todo_param)
+    todo = Todo.find(params[:id])
     todo.destroy
     head :no_content, status: :ok
   end
